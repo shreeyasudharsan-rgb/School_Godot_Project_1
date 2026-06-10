@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://puok15l0rc0o"]
+
+[ext_resource type="Texture2D" uid="uid://cm6hbrfhavopy" path="res://Assets/Sprites/enemy-sprtiesheet.png" id="1_4bu6p"]
+[ext_resource type="Script" uid="uid://cfjyv0ty5a2r3" path="res://Scripts/skull_enemy.gd" id="1_15hii"]
+[ext_resource type="PackedScene" uid="uid://b7w06ch7x7nyn" path="res://Scenes/killzone.tscn" id="2_15hii"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acvlw"]
+atlas = ExtResource("1_4bu6p")
+region = Rect2(0, 0, 17, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfsi8"]
+atlas = ExtResource("1_4bu6p")
+region = Rect2(17, 0, 17, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c43u6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acvlw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfsi8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eckcw"]
+size = Vector2(12.088711, 17.32603)
+
+[node name="Skull Enemy" type="Node2D" unique_id=935609323]
+z_index = 2
+script = ExtResource("1_15hii")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2040651458]
+sprite_frames = SubResource("SpriteFrames_c43u6")
+autoplay = "default"
+frame_progress = 0.015333156
+
+[node name="Killzone" parent="." unique_id=1279402456 instance=ExtResource("2_15hii")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=2101638853]
+position = Vector2(0, 0.087501526)
+shape = SubResource("RectangleShape2D_eckcw")
